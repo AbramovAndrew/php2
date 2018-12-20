@@ -1,4 +1,5 @@
 <?php
+    // задача 5
     class A {
         public function foo() {
             static $x = 0;
