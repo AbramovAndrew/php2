@@ -13,7 +13,7 @@ Twig_Autoloader::register();
 	
 $loader = new Twig_loader_FileSystem('templates');
 $twig = new Twig_Environment($loader);
-$template = $twig->LoadTemplate('lesson_3.html');
+$template = $twig->LoadTemplate('lesson3_1.html');
 
 
 
@@ -30,10 +30,10 @@ $query = "SELECT * FROM gall_gen";
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
 for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
 {
-    $row['link_big'] = "images/big/".$row['link_big'];
+    // $row['link_big'] = "images/big/".$row['link_big'];
     $row['link_small'] = "images/small/".$row['link_small'];
+    $row['link_big'] = "lesson3_2.php?img=".$row['id'];
 };
-// var_dump($data);
 
 echo $template->render(array('data' => $data));
 ?>

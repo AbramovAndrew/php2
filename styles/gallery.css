@@ -3,8 +3,13 @@ main {
     flex-wrap: wrap;
     justify-content: center;
 }
-figure {
+figure.small {
     width: 220px;
+    background-color: #eee;
+    text-align: center;
+}
+figure.big {
+    /* width: 220px; */
     background-color: #eee;
     text-align: center;
 }

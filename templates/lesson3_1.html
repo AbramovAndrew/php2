@@ -1,0 +1,8 @@
+{% for item in data %}
+        <figure class="small">
+            <a href="{{ item.link_big }}">
+                <img src="{{ item.link_small }}" alt = "{{ item.descr_alt }}">
+            </a>
+            <figcaption>{{ item.descr_cap }}</figcaption>
+        </figure>
+{% endfor %}
