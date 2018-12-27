@@ -1,8 +1,9 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Галерея. Урок №3 PHP2</title>
+    <meta charset="utf-8">
+    <title>Галерея. Урок №3 PHP2</title>
+    <link rel="stylesheet" href="styles/gallery.css">
 </head>
 <body>
 
