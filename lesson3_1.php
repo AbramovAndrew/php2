@@ -27,12 +27,16 @@ mysqli_query($link, "SET NAMES 'utf8'");
 
 $query = "SELECT * FROM gall_gen";
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
-for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
+{
+    $row['link_big'] = "images/big/".$row['link_big'];
+    $row['link_small'] = "images/small/".$row['link_small'];
+};
 // var_dump($data);
 
-echo $template->render(array('data' => $data));	
+echo $template->render(array('data' => $data));
 ?>
-	
+
 
 </body>
 </html>
