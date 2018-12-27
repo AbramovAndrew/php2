@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/gallery.css">
 </head>
 <body>
-
+    <main>
 <?php
 require_once 'twig/Autoloader.php';
 Twig_Autoloader::register();
@@ -38,6 +38,6 @@ for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
 echo $template->render(array('data' => $data));
 ?>
 
-
+    </main>
 </body>
 </html>
