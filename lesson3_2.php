@@ -1,4 +1,3 @@
-
 <?php
     require_once 'twig/Autoloader.php';
     Twig_Autoloader::register();
@@ -19,7 +18,6 @@
         $query = "SELECT * FROM gall_gen WHERE id='$id'";
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
         $img = mysqli_fetch_assoc($result);
-        // var_dump($id);
         $img['link_big'] = "images/big/".$img['link_big'];
     }
 
