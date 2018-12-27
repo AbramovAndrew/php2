@@ -1,11 +1,4 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Галерея. Урок №3 PHP2</title>
-    <link rel="stylesheet" href="styles/gallery.css">
-</head>
-<body>
+
 <?php
     require_once 'twig/Autoloader.php';
     Twig_Autoloader::register();
@@ -30,8 +23,8 @@
         $img['link_big'] = "images/big/".$img['link_big'];
     }
 
-    echo $template->render(array('img' => $img));
+    echo $template->render(array(
+        'img' => $img,
+        'title' => "Изображение № $id"
+    ));
 ?>
-
-</body>
-</html>
