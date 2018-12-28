@@ -1,7 +1,6 @@
 <?php
-    require_once 'twig/Autoloader.php';
-    Twig_Autoloader::register();
-        
+    require_once './vendor/autoload.php';
+    require_once './vendor/twig/twig/lib/Twig/Loader/Filesystem.php';
     $loader = new Twig_loader_FileSystem('templates');
     $twig = new Twig_Environment($loader);
     $template = $twig->LoadTemplate('lesson3_2.html');
@@ -10,6 +9,10 @@
     $dbUser = 'root';
     $dbPassword = '';
     $dbName = 'gallery';
+
+    // $dbUser = 'host1590973';
+    // $dbPassword = 'c563590a';
+    // $dbName = 'host1590973_abramov1';
     $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
     mysqli_query($link, "SET NAMES 'utf8'");
 

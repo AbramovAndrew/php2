@@ -8,10 +8,20 @@
 <body>
     <main>
 <?php
-require_once 'twig/Autoloader.php';
-Twig_Autoloader::register();
-	
+require_once './vendor/autoload.php';
+// Twig_Autoloader::register();
+// var_dump(get_declared_classes());
+// require_once './vendor/composer/autoload_classmap.php';
+// require_once './vendor/composer/autoload_files.php';
+// require_once './vendor/composer/autoload_namespaces.php';
+// require_once './vendor/composer/autoload_psr4.php';
+// require_once './vendor/composer/autoload_real.php';
+// require_once './vendor/composer/autoload_static.php';
+// require_once './vendor/composer/ClassLoader.php';
+
+require_once './vendor/twig/twig/lib/Twig/Loader/Filesystem.php';
 $loader = new Twig_loader_FileSystem('templates');
+// $loader = new Twig_loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 $template = $twig->LoadTemplate('lesson3_1.html');
 
@@ -19,10 +29,14 @@ $dbHost = 'localhost';
 $dbUser = 'root';
 $dbPassword = '';
 $dbName = 'gallery';
+
+// $dbUser = 'host1590973';
+// $dbPassword = 'c563590a';
+// $dbName = 'host1590973_abramov1';
 $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
 mysqli_query($link, "SET NAMES 'utf8'");
 
-$query = "SELECT * FROM gall_gen";
+$query = "SELECT * FROM gall_gen LIMIT 5";
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
 for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
 {
@@ -33,5 +47,65 @@ for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
 echo $template->render(array('data' => $data));
 ?>
     </main>
+    <button class="more">Еще</button>
+
+    <script>
+        (function Module() {
+            function ajaxRequest()
+            {
+                try // Браузер не относится к семейству IE?
+                {
+                    var request = new XMLHttpRequest();
+                }
+                catch(e1)
+                {
+                    try // Это IE 6+?
+                    {
+                        request = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    catch(e2)
+                    {
+                        try // Это IE 5?
+                        {
+                            request = new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        catch(e3) // Данный браузер не поддерживает AJAX
+                        {
+                            request = false;
+                        }
+                    }
+                }
+                return request;
+            }
+            
+            var set = 0;
+            document.querySelector('.more').addEventListener('click', function()
+            {
+                var params = 'set=' + ++set;
+                // console.log(params);
+                request = new ajaxRequest();
+                request.open("POST", "addajax.php", true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.setRequestHeader("Content-length", params.length);
+                request.setRequestHeader("Connection", "close");
+                request.onreadystatechange = function()
+                {
+                    if (this.readyState == 4)
+                    {
+                        if (this.status == 200)
+                        {
+                            if (this.responseText != null)
+                            {
+                                document.querySelector('main').appendChild(this.responseText);
+                            }
+                            else alert("Ошибка AJAX: Данные не получены");
+                        }
+                        else alert( "Ошибка AJAX: " + this.statusText);
+                    }
+                }
+                request.send(params);
+            });
+        }());
+    </script>
 </body>
 </html>
