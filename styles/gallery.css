@@ -1,0 +1,18 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+figure.small {
+    width: 220px;
+    background-color: #eee;
+    text-align: center;
+}
+figure.big {
+    background-color: #eee;
+    text-align: center;
+}
+.more {
+    display: block;
+    margin: 0 auto;
+}
