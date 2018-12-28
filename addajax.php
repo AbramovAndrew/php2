@@ -4,9 +4,7 @@
     $dbPassword = '';
     $dbName = 'gallery';
     
-    // $dbUser = 'host1590973';
-    // $dbPassword = 'c563590a';
-    // $dbName = 'host1590973_abramov1';
+    
     
 
     if (isset($_POST['set'])) {

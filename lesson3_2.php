@@ -10,9 +10,7 @@
     $dbPassword = '';
     $dbName = 'gallery';
 
-    // $dbUser = 'host1590973';
-    // $dbPassword = 'c563590a';
-    // $dbName = 'host1590973_abramov1';
+    
     $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
     mysqli_query($link, "SET NAMES 'utf8'");
 
