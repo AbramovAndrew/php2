@@ -38,7 +38,7 @@ $result = mysqli_query($link, $query) or die(mysqli_error($link));
 for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row)
 {
     $row['link_small'] = "images/small/".$row['link_small'];
-    $row['link_big'] = "lesson3_2.php?img=".$row['id'];
+    $row['link_big'] = "lesson4_2.php?img=".$row['id'];
 };
 
 echo $template->render(array('data' => $data));
