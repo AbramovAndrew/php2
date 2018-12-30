@@ -59,12 +59,13 @@ echo $template->render(array('data' => $data));
             var set = 0;
             document.querySelector('.more').addEventListener('click', function()
             {
-                var params = 'set=' + ++set;
+                // var params = 'set=' + ++set;
+                nocache = "&nocache=" + Math.random() * 1000000;
                 request = new ajaxRequest();
-                request.open("POST", "addajax.php", true);
-                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                request.setRequestHeader("Content-length", params.length);
-                request.setRequestHeader("Connection", "close");
+                request.open("GET", "addajax.php?set=amazon.com/gp/aw" + nocache, true);
+                // request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // request.setRequestHeader("Content-length", params.length);
+                // request.setRequestHeader("Connection", "close");
                 request.onreadystatechange = function()
                 {
                     if (this.readyState == 4)
@@ -80,7 +81,7 @@ echo $template->render(array('data' => $data));
                         else alert( "Ошибка AJAX: " + this.statusText);
                     }
                 }
-                request.send(params);
+                request.send(null);
             });
         }());
     </script>

@@ -1,19 +1,29 @@
 <?php
-    $dbHost = 'localhost';
-    $dbUser = 'root';
-    $dbPassword = '';
-    $dbName = 'gallery';
+    
     
     require_once './vendor/autoload.php';
     require_once './vendor/twig/twig/lib/Twig/Loader/Filesystem.php';
     $loader = new Twig_loader_FileSystem('templates');
     $twig = new Twig_Environment($loader);
-    $template = $twig->LoadTemplate('lesson3_1.html');    
+    $template = $twig->LoadTemplate('lesson3_1.html');
     
-
-    if (isset($_POST['set'])) {
+    if (isset($_POST['set']))
+    {
         $set = (int) $_POST['set'];
-        
+        formResponse($set, $template);
+    }
+    else if (isset($_GET['set']))
+    {
+        $set = (int) $_GET['set'];
+        formResponse($set, $template);
+    }
+
+    function formResponse($set, $template) {
+        $dbHost = 'localhost';
+        $dbUser = 'root';
+        $dbPassword = '';
+        $dbName = 'gallery';
+
         $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
         mysqli_query($link, "SET NAMES 'utf8'");
         
