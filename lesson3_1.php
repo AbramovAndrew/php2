@@ -75,6 +75,7 @@ echo $template->render(array('data' => $data));
                             if (this.responseText != null)
                             {
                                 document.querySelector('main').insertAdjacentHTML('beforeEnd', this.responseText);
+                                document.querySelector('button').scrollIntoView(false);
                             }
                             else alert("Ошибка AJAX: Данные не получены");
                         }
