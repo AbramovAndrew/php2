@@ -22,7 +22,7 @@ require_once './vendor/autoload.php';
 require_once './vendor/twig/twig/lib/Twig/Loader/Filesystem.php';
 $loader = new Twig_loader_FileSystem('templates');
 $twig = new Twig_Environment($loader);
-$template = $twig->LoadTemplate('lesson3_1.html');
+$template = $twig->LoadTemplate('lesson4_1.html');
 
 $dbHost = 'localhost';
 $dbUser = 'root';
@@ -74,6 +74,7 @@ echo $template->render(array('data' => $data));
                             if (this.responseText != null)
                             {
                                 document.querySelector('main').insertAdjacentHTML('beforeEnd', this.responseText);
+                                document.querySelector('button').scrollIntoView(false);
                             }
                             else alert("Ошибка AJAX: Данные не получены");
                         }

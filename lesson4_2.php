@@ -3,7 +3,7 @@
     require_once './vendor/twig/twig/lib/Twig/Loader/Filesystem.php';
     $loader = new Twig_loader_FileSystem('templates');
     $twig = new Twig_Environment($loader);
-    $template = $twig->LoadTemplate('lesson3_2.html');
+    $template = $twig->LoadTemplate('lesson4_2.html');
     
     $dbHost = 'localhost';
     $dbUser = 'root';
