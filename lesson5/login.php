@@ -1,10 +1,5 @@
 <?php
-	$dbHost = 'localhost';
-	$dbUser = 'root';
-	$dbPassword = '';
-	$dbName = 'signin';
-	$link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
-	mysqli_query($link, "SET NAMES 'utf8'");
+    include 'linkdb.php';
 	
 	if (!empty($_POST['password']) and !empty($_POST['login'])) {
 		$login = mysqli_real_escape_string($link, $_POST['login']);
@@ -15,7 +10,9 @@
 		$user = mysqli_fetch_assoc($result);
 		
 		if (!empty($user)) {
-			header('Location: http://localhost/php2/php2.git/lesson5/index.php');
+            session_start();
+            $_SESSION['auth'] = true;
+			// header('Location: http://localhost/php2/php2.git/lesson5/index.php');
 		} else {
 			echo "No\n";
 		}
